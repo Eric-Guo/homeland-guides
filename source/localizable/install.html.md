@@ -8,52 +8,29 @@ title: Install Homeland with Docker - Homeland
 
 ## System requirements
 
-- Linux Server [4 Core CPU, 4G Memory, 50G Disk, 64 bit] - _Better use Ubuntu Server 14.04_
+- Linux Server [4 Core CPU, 4G Memory, 50G Disk, 64 bit] - _Better use Rocky Linux 9.2_
 - [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/)
 
 ## Usage
 
 ### Install Docker:
 
-This script was made for Ubuntu Server 14.04, If you use other system version, please read [Docker Installaction](https://docker.github.io/engine/installation/linux/).
+This script was made for Rocky Linux 9.2, If you use other system version, please read [Docker Installaction](https://docker.github.io/engine/installation/linux/), the script original from [DO](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-rocky-linux-9#step-1-installing-docker)
 
 ```bash
-curl -sSL https://git.io/install-docker | bash
+sudo dnf check-update
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo systemctl status docker
+sudo systemctl enable docker
 ```
-
-#### Run Docker commands without sudo
-
-##### 1. Add the `docker` group if it doesn't already exist
-
-```console
-$ sudo groupadd docker
-```
-
-##### 2. Add the connected user `$USER` to the docker group
-
-Optionally change the username to match your preferred user.
-
-```console
-$ sudo gpasswd -a $USER docker
-```
-
-##### 3. Restart the `docker` daemon
-
-```console
-$ sudo service docker restart
-```
-
-If you are on Ubuntu 14.04-15.10, use `docker.io` instead:
-
-````console
-$ sudo service docker.io restart
-``
 
 ### Test Docker
 
 ```bash
-docker info
-docker-compose version
+docker info # 24.0.7
+docker compose version # version v2.21.0
 ````
 
 ### Get homeland-docker
