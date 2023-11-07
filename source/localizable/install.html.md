@@ -33,11 +33,12 @@ docker info # 24.0.7
 docker compose version # version v2.21.0
 ````
 
-### Get homeland-docker
+### Get oauth2id docker
 
 ```bash
-git clone https://github.com/ruby-china/homeland-docker.git
-cd homeland-docker/
+yum install git
+git clone https://github.com/thape-cn/oauth2id-docker
+cd oauth2id-docker/
 ```
 
 ## Application configuration
